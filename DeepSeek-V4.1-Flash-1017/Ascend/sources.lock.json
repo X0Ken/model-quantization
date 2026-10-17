@@ -89,10 +89,11 @@
     {
       "path": "scripts/quant_dp_inner.sh",
       "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/fbecb7d35e2636d10be10a8aee655f0b184d7921/release/msmodelslim/scripts/quant_dp_inner.sh",
-      "size": 609,
+      "size": 223,
       "upstream_sha256": "9ece9655286c86092e62741d070a55ea96c92b43290b5851276e26ad870e095a",
       "sha256": "4dcb71ca32d1b20cff0e1d8369d3385a8a6691aa53f1080997450faaf9195e5e",
-      "modifications": "Replace hardcoded destructive launcher with parameterized run_stage1.py entry point; default device IDs 0-7."
+      "modifications": "Replace hardcoded destructive launcher with parameterized run_stage1.py entry point; default device IDs 0-7.",
+      "upstream_size": 609
     },
     {
       "path": "reference/config.1017.json",

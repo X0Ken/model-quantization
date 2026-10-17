@@ -65,10 +65,11 @@ def main():
     needle = "  dataset: mix_calib.jsonl"
     assert template.count(needle) == 1
     recipe.write_text(template.replace(needle, "  dataset: " + json.dumps(str(ROOT / "calib/mix_calib.jsonl"))))
-    (work / "run.json").write_text(json.dumps({
+    record = {
         "model": str(model), "tool_commit": actual, "devices": args.devices,
         "layers": args.layers, "commands": commands, "status": "started",
-    }, indent=2) + "\n")
+    }
+    (work / "run.json").write_text(json.dumps(record, indent=2) + "\n")
     for i, command in enumerate(commands):
         if i == 2:
             for name in ("config.json", "tokenizer.json", "tokenizer_config.json", "configuration.json"):
@@ -77,6 +78,8 @@ def main():
                     shutil.copy2(source, output / name)
         print(shlex.join(command), flush=True)
         subprocess.run(command, cwd=tool, check=True)
+    record["status"] = "stage1-exported"
+    (work / "run.json").write_text(json.dumps(record, indent=2) + "\n")
     print(f"Stage1 export completed: {output}; full-model assembly and accuracy validation remain.")
 
 

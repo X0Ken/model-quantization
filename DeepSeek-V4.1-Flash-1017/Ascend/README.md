@@ -57,7 +57,7 @@ python3 scripts/run_stage1.py \
 `bash scripts/quant_dp_inner.sh ...` 接受同一组参数。
 入口校验固定工具提交、工作树、官方模型类型与分片存在性；创建 stage1 输入和工作配方，
 把工作配方中的 dataset 改为本仓库数据的绝对路径，再调用量化工具。原始 YAML 保持不变。
-运行参数保存到工作目录 `run.json`，控制台日志由调用方保存；该文件的 `status=started` 仅表示启动，不表示验收。
+运行参数保存到工作目录 `run.json`，控制台日志由调用方保存；`status=started` 仅表示启动，`stage1-exported` 表示主干导出完成，均不表示质量验收。
 输出位于 `--work/stage1`，**只完成主干**。
 
 校准设备数会影响产物，默认 DP8 不等于作者 DP16 参考产物。固定设备数、软件、配方及校准集后再比较。
