@@ -1,0 +1,117 @@
+{
+  "upstream_tool": "https://github.com/Ascend/msmodelslim",
+  "base_commit": "92e219fa9565a5bad84d90474a27bb11524d691c",
+  "files": [
+    {
+      "path": "calib/mix_calib.jsonl",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/e0dbdaec4fae5b61d979bc2c0f7fdd49f830489c/release/msmodelslim/calib/mix_calib.jsonl",
+      "sha256": "802b21aef7585794e534643d17a4c316b6eed1f0ea22fe405e6d228ac4024f8b",
+      "size": 75929
+    },
+    {
+      "path": "licenses/chiro-LICENSE",
+      "url": "https://raw.githubusercontent.com/chiro2001/deepseek-v4.1-flash-ascend910B/a1bf0012d1683085b6bb714236311ac8d710006a/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "size": 11357
+    },
+    {
+      "path": "patches/PATCHES.md",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/18c0a3e1a39cb92fefee4b84e7e2ecc840fb3d8f/release/msmodelslim/patches/PATCHES.md",
+      "sha256": "c0a96783cf5a55eb4a218d90c9364a2d4781b7c69904d0f6d3ca1d756a07cbb4",
+      "size": 4833
+    },
+    {
+      "path": "patches/msmodelslim_v41_w4a8.patch",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/8913a34ab7d3d83fe38ac57e723a59fbd4ca244a/release/msmodelslim/patches/msmodelslim_v41_w4a8.patch",
+      "sha256": "15f8368ea7813dbb337267d02136d330c36e23f681b892c5e866b2a9e286acfb",
+      "size": 72677
+    },
+    {
+      "path": "recipes/deepseek_v4_1_flash_w4a8.yaml",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/676b27ec2d14f69ed7e8149d3479b79051edbdcd/release/msmodelslim/recipes/deepseek_v4_1_flash_w4a8.yaml",
+      "sha256": "d3d9bdc6f2f249407dbbdb9faea8414a7d448a153c38f9ea1c36e3451deb7345",
+      "size": 2582
+    },
+    {
+      "path": "scripts/add_vision_weights.py",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/e5d842db673cbbd0cba23a23103cb0eb477733b7/release/msmodelslim/scripts/add_vision_weights.py",
+      "sha256": "cd3cb2f5dfc55c01206b5576a0fe9e036a0f1f62abcd66a62d8d85722c72b17f",
+      "size": 2519
+    },
+    {
+      "path": "scripts/apply_msmodelslim_patch.sh",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/192b90af1c0bf5cd762ba518ac46f9c8f6debe5e/release/msmodelslim/scripts/apply_msmodelslim_patch.sh",
+      "sha256": "d01621da3455dee3b0fa3ddb525860af578517482523a8951b65f094670cb1a9",
+      "size": 3406
+    },
+    {
+      "path": "scripts/engram_convert_int8.py",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/1de52fed9d31ffadfaefa8468e971f9c936671f0/release/msmodelslim/scripts/engram_convert_int8.py",
+      "sha256": "ee7c95ec327d0a66e47da5758176305789c12b01f04b3cd4797adf3c957b78ee",
+      "size": 4857
+    },
+    {
+      "path": "scripts/engram_dr_build.py",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/e591cbc4eb8e2fb52eb0ece54240bfe4fc9ab847/release/msmodelslim/scripts/engram_dr_build.py",
+      "sha256": "be4f1a1bad8a36928a54a150948a7b3a16421c63402605b0f461abcd617b00ea",
+      "size": 11304
+    },
+    {
+      "path": "scripts/make_dspark_ckpt.py",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/b6ea91ee65e8d47a1097537870e1dad7955e54d7/release/msmodelslim/scripts/make_dspark_ckpt.py",
+      "sha256": "269e8e46c0647e297f70472684f2118181dadfce6451969993ddb9893a577361",
+      "size": 50271
+    },
+    {
+      "path": "scripts/make_full_model.py",
+      "url": "https://raw.githubusercontent.com/chiro2001/deepseek-v4.1-flash-ascend910B/a1bf0012d1683085b6bb714236311ac8d710006a/quant/scripts/make_full_model.py",
+      "sha256": "df5b4e8e7b8b59a48d4e2c2df6cb1719797a2d34ab53b7e6180aabf8bf93025d",
+      "size": 3412
+    },
+    {
+      "path": "scripts/make_qrot_vision_product.py",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/48cc85380a0a5d65f3a3044eae8ac2b9abbc0ced/release/msmodelslim/scripts/make_qrot_vision_product.py",
+      "sha256": "d5bf39c8182b1395d34918aa0c596ee4b638524fcda2e066d2a09d15af27138b",
+      "size": 4813
+    },
+    {
+      "path": "scripts/mtpq_quantize_draft.py",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/c1a5b6131908441c864c2b26fbf220a12ea0f428/release/msmodelslim/scripts/mtpq_quantize_draft.py",
+      "sha256": "00409a4e01e13c2475de49bb4e8fde70e7140da0d32b3438063e8d17900acae4",
+      "size": 32101
+    },
+    {
+      "path": "scripts/prepare_runtime_ckpt.py",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/67d36f7340a91a9523bf45937b21740b6a03fc37/release/msmodelslim/scripts/prepare_runtime_ckpt.py",
+      "sha256": "02d3a96490f58582fa5bf1a1e377316a475e0219d26a4be419170edc465f111f",
+      "size": 2952
+    },
+    {
+      "path": "scripts/quant_dp_inner.sh",
+      "url": "https://modelscope.cn/models/chiro2001/DeepSeek-V4.1-Flash-w4a8-Ascend/resolve/fbecb7d35e2636d10be10a8aee655f0b184d7921/release/msmodelslim/scripts/quant_dp_inner.sh",
+      "size": 609,
+      "upstream_sha256": "9ece9655286c86092e62741d070a55ea96c92b43290b5851276e26ad870e095a",
+      "sha256": "4dcb71ca32d1b20cff0e1d8369d3385a8a6691aa53f1080997450faaf9195e5e",
+      "modifications": "Replace hardcoded destructive launcher with parameterized run_stage1.py entry point; default device IDs 0-7."
+    },
+    {
+      "path": "reference/config.1017.json",
+      "url": "https://modelscope.cn/models/deepseek-ai/DeepSeek-V4.1-Flash-1017/resolve/master/config.json",
+      "retrieved_date": "2026-10-17",
+      "sha256": "8be45ce0476004a3f529fd896115a4a2e800a129ad2d3ec05b16050f52e21879",
+      "size": 3311
+    },
+    {
+      "path": "reference/config.original.json",
+      "url": "https://modelscope.cn/models/deepseek-ai/DeepSeek-V4.1-Flash/resolve/master/config.json",
+      "retrieved_date": "2026-10-17",
+      "sha256": "8be45ce0476004a3f529fd896115a4a2e800a129ad2d3ec05b16050f52e21879",
+      "size": 3311
+    }
+  ],
+  "patched_tool": {
+    "repository": "https://github.com/X0Ken/msmodelslim",
+    "branch": "deepseek-v41-w4a8",
+    "commit": "c61748f295dc8778a978fbf97ee790609f9ed2ea"
+  }
+}

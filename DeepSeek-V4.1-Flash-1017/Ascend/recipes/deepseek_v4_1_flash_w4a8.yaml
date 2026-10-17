@@ -1,0 +1,118 @@
+apiversion: modelslim_v1
+metadata:
+  config_id: deepseek_v4_1_flash_w4a8
+  score: 0.0
+  label:
+    w_bit: 4
+    a_bit: 8
+    is_sparse: false
+    kv_cache: false
+  verified_model_types:
+    - deepseek_v41
+  verified_tags: {}
+# 路由专家：W4A8（int4 per-channel SSZ + int8 per-token）
+default_w4a8_dynamic: &default_w4a8_dynamic
+  act:
+    scope: "per_token"
+    dtype: "int8"
+    symmetric: True
+    method: "minmax"
+  weight:
+    scope: "per_channel"
+    dtype: "int4"
+    symmetric: True
+    method: "ssz"
+# 注意力/共享专家：W8A8
+default_w8a8_dynamic: &default_w8a8_dynamic
+  act:
+    scope: "per_token"
+    dtype: "int8"
+    symmetric: True
+    method: "minmax"
+  weight:
+    scope: "per_channel"
+    dtype: "int8"
+    symmetric: True
+    method: "minmax"
+spec:
+  process:
+    - type: "quarot"
+      block_size: 32
+    - type: "flex_awq_ssz"
+      qconfig:
+        act:
+          scope: "per_token"
+          dtype: "int8"
+          symmetric: True
+          method: "minmax"
+        weight:
+          scope: "per_channel"
+          dtype: "int4"
+          symmetric: True
+          method: "ssz"
+          ext:
+            step: 10
+      enable_subgraph_type:
+        - "up-down"
+      include:
+        - "*"
+      exclude:
+        - "*.ffn.shared_experts.*"
+        - "mtp*"
+        - "*engram*"
+        - "*vision*"
+        - "*aligner*"
+    - type: "flex_smooth_quant"
+      enable_subgraph_type:
+        - "norm-linear"
+      include:
+        - "*"
+      exclude:
+        - "*ffn_norm*"
+        - "mtp*"
+        - "*engram*"
+        - "*vision*"
+        - "*aligner*"
+    # 注意力投影 -> W8A8
+    - type: "linear_quant"
+      qconfig: *default_w8a8_dynamic
+      include:
+        - "*attn*"
+      exclude:
+        - "*wo_a"
+        - "*wo_b"
+        - "*compressor.wgate"
+        - "*compressor.wkv"
+        - "*indexer.weights_proj"
+        - "*indexer.wk"
+        - "*indexer.wq_a"
+        - "mtp*"
+        - "*engram*"
+        - "*vision*"
+        - "*aligner*"
+    # 路由专家 -> W4A8
+    - type: "linear_quant"
+      qconfig: *default_w4a8_dynamic
+      include:
+        - "*ffn*"
+      exclude:
+        - "*gate"
+        - "*shared_experts*"
+        - "mtp*"
+        - "*engram*"
+        - "*vision*"
+        - "*aligner*"
+    # 共享专家 -> W8A8
+    - type: "linear_quant"
+      qconfig: *default_w8a8_dynamic
+      include:
+        - "*ffn.shared_experts*"
+      exclude:
+        - "mtp*"
+        - "*engram*"
+        - "*vision*"
+        - "*aligner*"
+  dataset: mix_calib.jsonl
+  save:
+    - type: "ascendv1_saver"
+      part_file_size: 4
