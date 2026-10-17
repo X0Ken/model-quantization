@@ -28,11 +28,12 @@ def main():
         ap.error("device IDs must be unique nonnegative integers")
     prepared, output = work / "input-stage1", work / "stage1"
     recipe = work / "deepseek_v4_1_flash_w4a8.yaml"
+    cli = Path(sys.executable).with_name("msmodelslim")
     commands = [
         [sys.executable, str(ROOT / "scripts/make_full_model.py"),
          "--src", str(model), "--dst", str(prepared), "--layers", str(args.layers),
          "--mtp", "0", "--engram", "off", "--vision", "drop"],
-        [sys.executable, "-m", "msmodelslim", "quant", "--model_path", str(prepared),
+        [str(cli), "quant", "--model_path", str(prepared),
          "--save_path", str(output), "--config", str(recipe), "--device", "npu",
          "--device_id", *map(str, args.devices), "--model_type", "deepseek_v41",
          "--trust_remote_code", "true", "--log_level", "info"],
@@ -43,6 +44,8 @@ def main():
         for command in commands:
             print(shlex.join(command))
         return
+    if not cli.is_file():
+        ap.error(f"missing console entry {cli}; install msmodelslim in this Python environment")
     actual = subprocess.check_output(["git", "-C", str(tool), "rev-parse", "HEAD"], text=True).strip()
     if actual != TOOL_COMMIT:
         ap.error(f"tool commit {actual} != pinned {TOOL_COMMIT}")
